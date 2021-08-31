@@ -15,33 +15,28 @@ public class StackAbstract<K> {
         stack = new MyStack<K>();
     }
 
-    public static <K> void writeFile(File file, K[] word) {
-        try {
-            FileWriter writer = new FileWriter(file, false);
-            BufferedWriter bufferedWriter = new BufferedWriter(writer);
-            for(K value: word){
-                bufferedWriter.write(" "+(String) value);
-            }
-            bufferedWriter.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     public static String[] readFile(File file) throws IOException {
         return Algorithm.readFile(file);
     }
 
-    public MyStack<K> getList(String[] arr, File file){
+    public void main(String[] args){
         try{
+            File file = new File("D:\\JavaBasicPrograms\\untitled\\JavaOOPsPrograms\\DatastructuresAndAlgorithm\\src\\resources\\Stack.txt");
             String[] str=Algorithm.readFile(file);
             for (String strValue : str){
-                stack.push((K)strValue);
+                if(str.equals("(")) {
+                    stack.push((K) strValue);
+                }else{
+                    stack.pop();
+                }
             }
-
+            if(stack.isEmpty()){
+                System.out.println("Equation is balanced");
+            } else {
+                System.out.println("Equation is not balanced");
+            }
         }catch (IOException exception){
             System.out.println(exception);
         }
-        return stack;
     }
 }

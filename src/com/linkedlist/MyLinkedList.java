@@ -101,7 +101,7 @@ public class MyLinkedList<K> {
     }
 
     // searches node with given key parameter
-    public void searchNode(K key) {
+    public INode<K> searchNode(K key) {
         //System.out.println("Searches node with key: " + key + " in linked list");
         if (this.head != null) {
             INode<K> temp = head;
@@ -116,10 +116,12 @@ public class MyLinkedList<K> {
             }
             if (!keyFound) {
                 System.out.println("Key " + key + " not found in linked list");
+                return temp;
             }
         } else {
             System.out.println("List is empty");
         }
+        return null;
     }
 
     // inserts new node after node with given key
